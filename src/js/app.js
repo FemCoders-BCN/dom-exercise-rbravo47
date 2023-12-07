@@ -25,8 +25,6 @@ function grayColorCar(){
   itemTag.style.backgroundColor = "gray";
 }
 
-
-
 function showMessage() {
   const mensaje = document.getElementById("mensaje-container");
   // Mostrar el mensaje

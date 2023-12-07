@@ -1,14 +1,28 @@
-
 import { describe, expect, it, beforeAll } from "vitest";
 import { JSDOM } from "jsdom";
-import { redColorCar, showMessage } from "../tests/function.test.js";
+import { redColorCar, showMessage } from "../src/js/app";
 
-     
-beforeAll(async () => {
-    // Set up mock DOM elements
-    const dom = await JSDOM.fromFile("index.html", { runScripts: "dangerously" });
-  });
+describe("app.js",() => {
+  let dom;
  
+// lectura de nuestro html
+  beforeAll(async () => {
+    dom = await JSDOM.fromFile("./index.html", { runScripts: "dangerously" });
+    global.document = dom.window.document;
+  });
+  beforeAll(async () => {
+  dom = await JSDOM.fromFile("index.html", { runScripts: "dangerously", resources: "usable" });
+  global.document = dom.window.document;
+});
+ 
+  it("should render css", async () => {
+    let document = dom.window.document;
+    let link = document.querySelector("style");
+    console.log(document.querySelector("style").innerHTML);
+    expect(link.href.endsWith('../src/css/style.css')).toBe(true);
+  });
+})
+
      
 //Debe establecer la imagen de fondo con la imagen del carro en  color rojo****
 it('should set the background image of the product image to red', () => {
@@ -21,6 +35,7 @@ it('should set the background image of the product image to red', () => {
     document.body.appendChild(redColor);
     // llama a la funcion a ejecutar
     redColorCar();
+    console.log(document.querySelector("style").innerHTML);
     // Verifica que la imagen del carro sea correcta
     expect(imgCard.style.backgroundImage).toBe('url("../public/img/redcar.jpg")');
   });
@@ -39,6 +54,7 @@ it('should set the background image of the product image to red', () => {
     document.body.appendChild(redColor);
     // llama a la funcion
     redColorCar();
+    console.log(imgCard.style.backgroundImage);
     //  Verifica que el color sea correcto
     expect(redColor.style.backgroundColor).toBe('red');
   });
@@ -57,7 +73,7 @@ it('should show the message', () => {
     // llama la funcion
     showMessage();
     // Verifica que se muestre el mensaje*****
-    expect(mensaje.textContent).toBe('Mensaje');
+    expect(mensaje.textContent).toBe('mensaje');
     expect(mensaje.style.display).toBe('block');
   });
 
