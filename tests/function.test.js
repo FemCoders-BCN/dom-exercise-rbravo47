@@ -1,6 +1,7 @@
 
 import { describe, expect, it, beforeAll } from "vitest";
-import { redColorCar, showMessage } from "../tests/function";
+import { JSDOM } from "jsdom";
+import { redColorCar, showMessage } from "../tests/function.test.js";
 
      
 beforeAll(async () => {
@@ -9,7 +10,7 @@ beforeAll(async () => {
   });
  
      
-//Debe establecer la imagen de fondo con la imagen del carro en rojo****
+//Debe establecer la imagen de fondo con la imagen del carro en  color rojo****
 it('should set the background image of the product image to red', () => {
     // Configurar elementos DOM simulados
     const redColor = document.createElement('div');
@@ -24,7 +25,10 @@ it('should set the background image of the product image to red', () => {
     expect(imgCard.style.backgroundImage).toBe('url("../public/img/redcar.jpg")');
   });
 
-  // Color de fondo del elemento que dice "carro sea rojo"
+
+
+
+  // Color de fondo del elemento que dice "carro" sea rojo
   it('should set the background color of the "car" div to red', () => {
     // Configurar elementos DOM simulados
     const redColor = document.createElement('div');
