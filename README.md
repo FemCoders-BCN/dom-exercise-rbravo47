@@ -28,9 +28,9 @@ Este proyecto es una aplicación web que permite realizar factorizacion de codig
 
 # Imágenes
 
-<img src="../public/img/blackcar.jpg" alt="Carro Negro">
-<img src="../public/img/redcar.jpg" alt="Carro Rojo">
-<img src="../public/img/graycar.jpg" alt="Carro Negro">
+<img src="/public/img/blackcar.jpg" alt="Carro Negro">
+<img src="/public/img/redcar.jpg" alt="Carro Rojo">
+<img src="/public/img/graycar.jpg" alt="Carro Negro">
 
 
 # Tecnologías
