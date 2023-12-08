@@ -3,7 +3,8 @@ const blackColor = document.querySelector(".black");
 const grayColor = document.querySelector(".gray");
 const imgCard = document.querySelector(".product-image");
 const cartButton = document.getElementById("button");
-const itemTag = document.getElementsByTagName("h3")[0];
+const itemTag = document.getElementsByClassName("tag")[0];
+
 const mensaje = document.getElementById("white-button");
 
 

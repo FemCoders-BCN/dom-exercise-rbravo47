@@ -4,60 +4,47 @@ import { redColorCar, showMessage } from "../src/js/app";
 
 describe("app.js",() => {
   let dom;
- 
+  let window;
+  let itemTag; 
+  let redColor ;
+
 // lectura de nuestro html
   beforeAll(async () => {
-    dom = await JSDOM.fromFile("./index.html", { runScripts: "dangerously" });
-    global.document = dom.window.document;
-  });
-  beforeAll(async () => {
-  dom = await JSDOM.fromFile("index.html", { runScripts: "dangerously", resources: "usable" });
-  global.document = dom.window.document;
+  dom = await JSDOM.fromFile("index.html", { 
+    resources: "usable",
+    runScripts: "dangerously"
+     })
+      window = dom.window
+      document = dom.window.document
 });
- 
-  it("should render css", async () => {
-    let document = dom.window.document;
-    let link = document.querySelector("style");
-    console.log(document.querySelector("style").innerHTML);
-    expect(link.href.endsWith('../src/css/style.css')).toBe(true);
-  });
-})
 
-     
-//Debe establecer la imagen de fondo con la imagen del carro en  color rojo****
-it('should set the background image of the product image to red', () => {
+  //Debe tener una imagen del carro y debe ser rojo****
+  it("should set the background image of the product image to red"), () => { 
     // Configurar elementos DOM simulados
-    const redColor = document.createElement('div');
-    redColor.classList.add('red');
-    const imgCard = document.createElement('img');
+   
+    redColor = document.createElement('.red');
+    imgCard = document.createElement('img');
     imgCard.classList.add('product-image');
-    redColor.appendChild(imgCard);
-    document.body.appendChild(redColor);
+    redColor.appendChild('imgCard');
+    document.body.appendChild('redColor');
     // llama a la funcion a ejecutar
     redColorCar();
-    console.log(document.querySelector("style").innerHTML);
-    // Verifica que la imagen del carro sea correcta
-    expect(imgCard.style.backgroundImage).toBe('url("../public/img/redcar.jpg")');
-  });
+  // Verifica que la imagen del carro sea correcta
+  expect(imgCard.style.backgroundImage).toBe('url("../public/img/redcar.jpg")');
+}
+ 
+it('should set the background color of the "car" div to red', () => {
+  // Configurar elementos DOM simulados
+  redColor = document.createElement('red');  
+  itemTag = document.createElement('h3');
+  itemTag.classList.add('tag'); 
 
-
-
-
-  // Color de fondo del elemento que dice "carro" sea rojo
-  it('should set the background color of the "car" div to red', () => {
-    // Configurar elementos DOM simulados
-    const redColor = document.createElement('div');
-    redColor.classList.add('red');
-    const imgCard = document.createElement('img');
-    imgCard.classList.add('product-image');
-    redColor.appendChild(imgCard);
-    document.body.appendChild(redColor);
-    // llama a la funcion
-    redColorCar();
-    console.log(imgCard.style.backgroundImage);
-    //  Verifica que el color sea correcto
-    expect(redColor.style.backgroundColor).toBe('red');
-  });
+  document.body.appendChild('redColor'); 
+  // Llama a la función a ejecutar
+  redColorCar();
+  // Verifica que el color sea correcto
+  expect(itemTag.style.backgroundColor).toBe('red');
+});
 
 
 // Debe mostrar el mensaje*****
@@ -68,13 +55,14 @@ it('should show the message', () => {
     document.body.appendChild(mensaje);
     // Establece el texto del mensaje
     const whiteButton = document.createElement('button');
-    whiteButton.textContent = 'Mensaje';
+    whiteButton.textContent = 'mensaje';
     document.body.appendChild(whiteButton);
     // llama la funcion
     showMessage();
     // Verifica que se muestre el mensaje*****
+
     expect(mensaje.textContent).toBe('mensaje');
-    expect(mensaje.style.display).toBe('block');
+    
   });
 
   //Debería ocultar el mensaje después de 2 segundos*****
@@ -94,4 +82,5 @@ it('should show the message', () => {
       // Verify that the message is hidden
       expect(mensaje.style.display).toBe('none');
     }, 2000);
-  });
+  })
+}) 

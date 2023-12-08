@@ -8,19 +8,6 @@ El proyecto ya esta realizado con la arquitectura adecuada para su funcionamient
 
 - Visual Studio Code
 
-## Requisitos para realizar el testing
-
-- El testing se deberá de realizar en [vitest](https://vitest.dev/guide/)
-- Una vez instalado deberás poner en este **readme** (que deberás modificar), el proceso para que una persona que llegué al repositorio pueda hacer correr los test
-
-## Requisitos del Readme
-
-- DEBERÁ llevar una breve descripción del proyecto
-- DEBERÁ lleva las imágenes que muestren el proyecto
-- DEBERÁ llevar las tecnologías empleadas
-- DEBERÁ llevar como se debe hacer el proceso para instalar todo lo necesario para que se corran los test (instalar nodejs, hacer npm install  o npm i)
-
-
 # Descripción
 
 Este proyecto es una aplicación web que permite realizar factorizacion de codigo, asi como tambien crear test unitarios con vitest y ejecutarlos 
@@ -50,4 +37,4 @@ Ejecutar node -v nos muestra la version
 
 Instalar vitest (https://vitest.dev/guide/)
 Ejecutar el comando npm install -D vitest
-para ejevutar un test se coloca en la consola el siguiente comando : npm test 
+para ejecutar un test se coloca en la consola el siguiente comando : npm test 
