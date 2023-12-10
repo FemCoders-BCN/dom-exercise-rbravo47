@@ -4,7 +4,6 @@ const grayColor = document.querySelector(".gray");
 const imgCard = document.querySelector(".product-image");
 const cartButton = document.getElementById("button");
 const itemTag = document.getElementsByClassName("tag")[0];
-
 const mensaje = document.getElementById("white-button");
 
 
@@ -25,17 +24,16 @@ function grayColorCar(){
   cartButton.style.backgroundColor = "gray";
   itemTag.style.backgroundColor = "gray";
 }
-
 function showMessage() {
   const mensaje = document.getElementById("mensaje-container");
+  const whiteButton = document.getElementById("white-button");
   // Mostrar el mensaje
-  mensaje.textContent = document.getElementById("white-button").textContent;
+  mensaje.textContent = whiteButton.textContent;
   mensaje.style.display = "block";
-  mensaje.style= "font-weight: bolder; 1.5em; color: green"; // style="font-size: 1em; color: green"
+  mensaje.style.cssText = "font-weight: bolder; font-size: 1.5em; color: green";
   // Ocultar el mensaje después de 2 segundos
   setTimeout(() => {
     mensaje.style.display = "none";
   }, 2000);
 }
-
   export {redColorCar, blackColorCar, grayColorCar, showMessage}

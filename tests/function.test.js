@@ -5,8 +5,7 @@ import { redColorCar, showMessage } from "../src/js/app";
 describe("app.js",() => {
   let dom;
   let window;
-  let itemTag; 
-  let redColor ;
+
 
 // lectura de nuestro html
   beforeAll(async () => {
@@ -17,70 +16,63 @@ describe("app.js",() => {
       window = dom.window
       document = dom.window.document
 });
+it("should render css", async()=> {
+  let document = dom.window.document;
+  let link =document.querySelector("link");
+  expect(link).toBeDefined(); // Asegura que el elemento link existe
+  expect(link.href).toMatch(/\/src\/css\/style.css$/);
+})
 
   //Debe tener una imagen del carro y debe ser rojo****
-  it("should set the background image of the product image to red"), () => { 
-    // Configurar elementos DOM simulados
-   
-    redColor = document.createElement('.red');
-    imgCard = document.createElement('img');
-    imgCard.classList.add('product-image');
-    redColor.appendChild('imgCard');
-    document.body.appendChild('redColor');
-    // llama a la funcion a ejecutar
-    redColorCar();
+it("should set the background image of the product image to red"), () => { 
+  // Configurar elementos DOM simulados
+  imgCard = document.createElement('img');
+  //imgCard.classList.add('product-image');
+  redColor.appendChild('imgCard');
+  // llama a la funcion a ejecutar
+  redColorCar();
   // Verifica que la imagen del carro sea correcta
   expect(imgCard.style.backgroundImage).toBe('url("../public/img/redcar.jpg")');
 }
- 
-it('should set the background color of the "car" div to red', () => {
+//Debería establecer el color de fondo del tag en rojo
+it("should set the background color of the car div to red"), () => {
   // Configurar elementos DOM simulados
-  redColor = document.createElement('red');  
   itemTag = document.createElement('h3');
-  itemTag.classList.add('tag'); 
-
-  document.body.appendChild('redColor'); 
-  // Llama a la función a ejecutar
+  itemTag.classList.add('tag');
+  redColor.appendChild('itemTag');
   redColorCar();
   // Verifica que el color sea correcto
-  expect(itemTag.style.backgroundColor).toBe('red');
-});
+  expect(itemTag.style.backgroundColor).toBe("red");
+}
+//Debe establecer el color de fondo del botón del carrito de compras en rojo
+it("should set the background color of the button shopping cart to red"), () => {
+  // Configurar elementos DOM simulados
+  cartButton = document.createElement('button');
+  cartButton.classList.add('button');
+  cartButton.appendChild('itemTag');
+  redColorCar();
+  // Verifica que el color sea correcto
+  expect(itemTag.style.backgroundColor).toBe("red");
+}
 
+it('should show the message', (done) => {
+  // Configurar elementos DOM simulados
+  const mensajeContainer = document.createElement('div');
+  mensajeContainer.id = 'mensaje-container';
+  document.body.appendChild(mensajeContainer);
 
-// Debe mostrar el mensaje*****
-it('should show the message', () => {
-    // Configurar elementos DOM simulados
-    const mensaje = document.createElement('div');
-    mensaje.id = 'mensaje-container';
-    document.body.appendChild(mensaje);
-    // Establece el texto del mensaje
-    const whiteButton = document.createElement('button');
-    whiteButton.textContent = 'mensaje';
-    document.body.appendChild(whiteButton);
-    // llama la funcion
-    showMessage();
-    // Verifica que se muestre el mensaje*****
+  // Establece el texto del botón blanco
+  const whiteButton = document.createElement('button');
+  whiteButton.textContent = 'mensaje';
+  whiteButton.id = 'white-button';
+  document.body.appendChild(whiteButton);
 
-    expect(mensaje.textContent).toBe('mensaje');
+  // Llama la función
+  showMessage();
+  // Verifica que el mensaje esté visible
+  setTimeout(() => {
+    expect(mensajeContainer.style.display).toBe('block');
     
-  });
-
-  //Debería ocultar el mensaje después de 2 segundos*****
-  it('should hide the message after 2 seconds', () => {
-    // Configurar elementos DOM simulados
-    const mensaje = document.createElement('div');
-    mensaje.id = 'mensaje-container';
-    document.body.appendChild(mensaje);
-    // Set the text of the white button
-    const whiteButton = document.createElement('button');
-    whiteButton.textContent = 'Mensaje';
-    document.body.appendChild(whiteButton);
-    // llama a ala funcion
-    showMessage();
-    // Wait for the message to be hidden
-    setTimeout(() => {
-      // Verify that the message is hidden
-      expect(mensaje.style.display).toBe('none');
-    }, 2000);
-  })
-}) 
+  }, 2000);
+});
+})
